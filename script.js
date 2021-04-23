@@ -93,38 +93,39 @@ var specialCharacters = [
 var numericCharacters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var finalPassword = [];
 
-// Write password to the #password input
-// var password = generatePassword();
-// var passwordText = document.querySelector("#password");
-// passwordText.value = password;
 function writePassword() {
   alert("Let's make a password!!");
   var passwordLength = prompt("How many characters long?");
   if (passwordLength >= 8 && passwordLength <= 128) {
-    var lowerCaseConfirm = confirm(
-      "Would you like lowercase letters in your password?"
-    );
-
-    continuePassword();
+    continuePassword("lowercase", lowerCaseLetters);
+    continuePassword("uppercase", upperCaseLetters);
+    continuePassword("special characters", specialCharacters);
+    continuePassword("numbers", numericCharacters);
   } else {
     alert("Error, password must be between 8 and 128 characters long.");
     writePassword();
   }
 }
 
-function continuePassword() {
-  if (writePassword.lowerCaseConfirm) {
-    Array.prototype.push.apply(finalPassword, lowerCaseLetters);
-    var upperCaseConfirm = confirm(
-      "Would you like uppercase letters in your password?"
-    );
-  } else {
-    alert("yousuck");
+function continuePassword(type, arr) {
+  var lowerCaseConfirm = confirm(
+    "Would you like " + type + " letters in your password?"
+  );
+  if (lowerCaseConfirm == true) {
+    for (var i of arr) {
+      finalPassword.push(i);
+    }
+    return;
   }
+  return;
 }
 
 writePassword();
 console.log(finalPassword);
+// Write password to the #password input
+// var password = generatePassword();
+// var passwordText = document.querySelector("#password");
+// passwordText.value = password;
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
