@@ -91,7 +91,7 @@ var numericCharacters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var passwordBank = [];
 var finalPassword = [];
 
-//Starts
+//Starts the prompts.  First it checks the if the length is appropriate, then it continues to the next function
 function startPassword() {
   alert("Let's make a password!!");
   var passwordLength = prompt("How many characters long?");
@@ -107,6 +107,7 @@ function startPassword() {
   }
 }
 
+//checks user response, and adds the character type to the main array if they chose it.
 function continuePassword(type, arr) {
   var lowerCaseConfirm = confirm(
     "Would you like " + type + " letters in your password?"
